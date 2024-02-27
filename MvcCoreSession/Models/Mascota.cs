@@ -1,5 +1,6 @@
 ﻿namespace MvcCoreSession.Models
 {
+    [Serializable]
     public class Mascota
     {
         public string Nombre { get; set; }

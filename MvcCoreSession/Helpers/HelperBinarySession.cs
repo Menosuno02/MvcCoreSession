@@ -1,10 +1,11 @@
 ﻿using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml.Serialization;
 
 namespace MvcCoreSession.Helpers
 {
     public class HelperBinarySession
     {
-        // Vamos a crear dos metodos staitc
+        // Vamos a crear dos metodos static
         // No necesitamos hacer new para nuestras conversiones
         // Convertimos un objeto a byte[]
         public static byte[] ObjectToByte(Object objeto)
