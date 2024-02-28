@@ -1,13 +1,21 @@
-﻿@using MvcCoreSession.Helpers
+﻿@using MvcCoreSession.Extensions
 
 <h1>Ejemplos Session</h1>
 
 @{
+    /*
     Mascota mascota = null;
     if (Context.Session.GetString("MASCOTA") != null)
-    {
+        {
         string json = Context.Session.GetString("MASCOTA");
         mascota = HelperJsonSession.DeserializeObject<Mascota>(json);
+    }
+    */
+    // @using MvcCoreSession.Extensions
+    Mascota mascota = null;
+    if (Context.Session.GetString("MASCOTAOBJECT") != null)
+    {
+        mascota = Context.Session.GetObject<Mascota>("MASCOTAOBJECT");
     }
 }
 
@@ -39,6 +47,16 @@
     <li class="list-group-item">
         <a asp-controller="EjemploSession" asp-action="SessionMascotaJson">
             Session Json Object
+        </a>
+    </li>
+    <li class="list-group-item">
+        <a asp-controller="EjemploSession" asp-action="SessionMascotaObject">
+            Session Json Extensions
+        </a>
+    </li>
+    <li class="list-group-item">
+        <a asp-controller="EjemploSession" asp-action="SessionCollectionObject">
+            Session Collection Object
         </a>
     </li>
 </ul>
