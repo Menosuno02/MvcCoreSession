@@ -1,8 +1,24 @@
-﻿<h1>Ejemplos Session</h1>
+﻿@using MvcCoreSession.Helpers
+
+<h1>Ejemplos Session</h1>
+
+@{
+    Mascota mascota = null;
+    if (Context.Session.GetString("MASCOTA") != null)
+    {
+        string json = Context.Session.GetString("MASCOTA");
+        mascota = HelperJsonSession.DeserializeObject<Mascota>(json);
+    }
+}
 
 <h3>@ViewData["NUMERO"]</h3>
 <h2 class="text-primary">@Context.Session.GetString("nombre")</h2>
 <h2 class="text-primary">@Context.Session.GetString("hora")</h2>
+@if (mascota != null)
+{
+    <h2 class="text-danger">@mascota.Nombre, @mascota.Raza, @mascota.Edad años</h2>
+}
+
 
 <ul class="list-group">
     <li class="list-group-item">
@@ -13,6 +29,16 @@
     <li class="list-group-item">
         <a asp-controller="EjemploSession" asp-action="SessionMascota">
             Session Binary Object
+        </a>
+    </li>
+    <li class="list-group-item">
+        <a asp-controller="EjemploSession" asp-action="SessionCollection">
+            Session Binary Coleccion
+        </a>
+    </li>
+    <li class="list-group-item">
+        <a asp-controller="EjemploSession" asp-action="SessionMascotaJson">
+            Session Json Object
         </a>
     </li>
 </ul>
